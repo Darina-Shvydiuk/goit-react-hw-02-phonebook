@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ContactForm } from './ContactForm';
 import { Filter } from './Filter';
 import { ContactList } from './ContactList';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -11,16 +12,23 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handelFormSubmit = data => {
-    // if (data === data.contacts) {
-    //   return alert('вже э');
-    // }
+    const contactName = data.name.toLowerCase();
+    if (
+      this.state.contacts.find(
+        recordName => recordName.name.toLowerCase() === contactName
+      )
+    ) {
+      alert(`${data.name} is already in contacts.`);
+      return;
+    }
+
     this.setState(prevState => {
-      return { contacts: [...prevState.contacts, data] };
+      return {
+        contacts: [...prevState.contacts, data],
+      };
     });
   };
 
@@ -40,8 +48,8 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
 
-    const filterContacts = contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter)
+    const filterContacts = contacts.filter(recordName =>
+      recordName.name.toLowerCase().includes(normalizedFilter)
     );
 
     return (
