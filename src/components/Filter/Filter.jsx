@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 
 export class Filter extends Component {
   render() {
-    // console.log(this.props);
     return (
       <label className={s.label}>
         Find contacts by name

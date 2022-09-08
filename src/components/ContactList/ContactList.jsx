@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 export class ContactList extends Component {
   render() {
-    console.log(this.props);
     return (
       <ul className={s.list}>
         {this.props.contacts.map(({ id, name, number }) => {

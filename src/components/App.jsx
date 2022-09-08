@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ContactForm } from './ContactForm';
 import { Filter } from './Filter';
 import { ContactList } from './ContactList';
-
+import s from './App.module.css';
 export class App extends Component {
   state = {
     contacts: [
@@ -53,7 +53,7 @@ export class App extends Component {
     );
 
     return (
-      <div>
+      <div className={s.container}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.handelFormSubmit} />
 
